@@ -19,8 +19,8 @@ stages:
 - stage: 'Analysis'
   displayName: 'Analysis on SonarCloud'
   jobs: 
-  - job: 'Analysis om sonarcloud'
-    displayName: 'Analysis Job'
+  - job: 'Analysis job'
+    displayName: 'SonarCloud Analysis Job'
 
     steps:
     - task: NuGetToolInstaller@0
