@@ -12,7 +12,10 @@ variables:
 #    include:
 #    - release
 #  always: false 
+
+
 Stages:
+
 - stage: 'Analysis'
   displayName: 'Analysis on SonarCloud'
   jobs: 
