@@ -17,11 +17,21 @@ variables:
 
 stages:
 
-- stage: 'Prepare Analysis Configuration'
-  displayName: 'Prepare Analysis on SonarCloud'
+
+- stage: 'Build'
+  displayName: 'Build the web application'
+#  condition: eq(variables['Build.Reason'], 'Schedule')
   jobs: 
-  - job: 'Sonarcloud-AZ'
-    displayName: 'SonarCloud Analysis Job'
+  - job: 'Build'
+    displayName: 'Build job'
+    pool:
+      vmImage: 'ubuntu-18.04'
+      demands:
+      - npm
+
+    variables:
+      wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
+      dotnetSdkVersion: '3.1.300'
 
     steps:
     - task: NuGetToolInstaller@0
@@ -42,23 +52,7 @@ stages:
         scannerMode: 'MSBuild'
         projectKey: 'ArkatDadapeer_Space-Game---web'
         projectName: 'Space Game - web'
-
-- stage: 'Build'
-  displayName: 'Build the web application'
-#  condition: eq(variables['Build.Reason'], 'Schedule')
-  jobs: 
-  - job: 'Build'
-    displayName: 'Build job'
-    pool:
-      vmImage: 'ubuntu-18.04'
-      demands:
-      - npm
-
-    variables:
-      wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-      dotnetSdkVersion: '3.1.300'
-
-    steps:
+        
     - task: UseDotNet@2
       displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
       inputs:
