@@ -15,6 +15,7 @@ variables:
 
 steps:
 
+stages:
 - stage: 'Analysis'
   displayName: 'Analysis on SonarCloud'
   jobs: 
