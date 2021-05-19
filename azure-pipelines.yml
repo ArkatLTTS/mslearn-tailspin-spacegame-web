@@ -16,7 +16,7 @@ variables:
 
 
 stages:
-- stage: 'Prepare Analysis Configuration'
+- stage: Prepare Analysis Configuration
   displayName: 'Analysis on SonarCloud'
   jobs: 
   - job: 'Analysis'
