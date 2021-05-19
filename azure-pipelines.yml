@@ -13,8 +13,7 @@ variables:
 #    - release
 #  always: false 
 
-
-Stages:
+steps:
 
 - stage: 'Analysis'
   displayName: 'Analysis on SonarCloud'
