@@ -16,10 +16,10 @@ variables:
 
 
 stages:
-- stage: 'Analysis'
+- stage: 'Prepare Analysis Configuration'
   displayName: 'Analysis on SonarCloud'
   jobs: 
-  - job: 'Analysis job'
+  - job: 'Analysis'
     displayName: 'SonarCloud Analysis Job'
 
     steps:
