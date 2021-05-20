@@ -99,7 +99,7 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
-
+##### Test Stage #########
 - stage: test
   dependsOn: Build
   displayName: 'Run UI tests'
@@ -123,6 +123,7 @@ stages:
         arguments: '--no-build --configuration $(buildConfiguration)'
         publishTestResults: true
         projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
+        
 ###Staging Stage ####  
 - stage: 'Staging'
   displayName: 'Deploy to the staging environment'
