@@ -22,7 +22,7 @@ stages:
 
 - stage: 'Build'
   displayName: 'Build the web application'
-  condition: eq(variables['Build.Reason'], 'Schedule')
+  #condition: eq(variables['Build.Reason'], 'Schedule')
   jobs: 
   - job: 'Build'
     displayName: 'Build job'
@@ -99,6 +99,7 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
+
 ##### Test Stage #########
 - stage: test
   dependsOn: Build
@@ -125,6 +126,7 @@ stages:
         projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
         
 ###Staging Stage ####  
+
 - stage: 'Staging'
   displayName: 'Deploy to the staging environment'
   dependsOn: Test
